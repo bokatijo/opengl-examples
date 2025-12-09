@@ -49,8 +49,8 @@ namespace udit
         "}";
 
     Scene::Scene(unsigned width, unsigned height)
-    :
-        angle(0)
+        :
+        angle(0), scale(.25), scaleMod(0.01)
     {
         // Se establece la configuración básica:
 
@@ -73,6 +73,17 @@ namespace udit
     void Scene::update ()
     {
         angle += 0.01f;
+
+        scale += scaleMod;
+
+        if (scale >= 1.25f)
+        {
+            scaleMod = -0.01f;
+        }
+        else if (scale <= .25f)
+        {
+            scaleMod = 0.01f;
+        }
     }
 
     void Scene::render ()
@@ -85,6 +96,7 @@ namespace udit
 
         model_view_matrix = glm::translate (model_view_matrix, glm::vec3(0.f, 0.f, -4.f));
         model_view_matrix = glm::rotate    (model_view_matrix, angle, glm::vec3(0.f, 0.f, 1.f));
+        model_view_matrix = glm::scale     (model_view_matrix, glm::vec3(scale,scale,scale));
 
         glUniformMatrix4fv (model_view_matrix_id, 1, GL_FALSE, glm::value_ptr(model_view_matrix));
 

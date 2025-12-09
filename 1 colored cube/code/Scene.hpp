@@ -22,6 +22,8 @@ namespace udit
 
         Cube   cube;
         float  angle;
+        float  scale;
+        float  scaleMod;
 
     public:
 
