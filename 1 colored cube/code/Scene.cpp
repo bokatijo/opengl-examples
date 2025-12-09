@@ -56,7 +56,7 @@ namespace udit
 
         glEnable     (GL_CULL_FACE);
         glDisable    (GL_DEPTH_TEST);
-        glClearColor (.2f, .2f, .2f, 1.f);
+        glClearColor (.8f, .8f, .8f, 1.f);
 
         // Se compilan y se activan los shaders:
 
@@ -84,7 +84,7 @@ namespace udit
         glm::mat4 model_view_matrix(1);
 
         model_view_matrix = glm::translate (model_view_matrix, glm::vec3(0.f, 0.f, -4.f));
-        model_view_matrix = glm::rotate    (model_view_matrix, angle, glm::vec3(1.f, 2.f, 1.f));
+        model_view_matrix = glm::rotate    (model_view_matrix, angle, glm::vec3(0.f, 0.f, 1.f));
 
         glUniformMatrix4fv (model_view_matrix_id, 1, GL_FALSE, glm::value_ptr(model_view_matrix));
 
